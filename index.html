@@ -27,12 +27,15 @@
 	}
 	function displayPage(){
 		if (pagecount == 1) {
+			fadeBoxIn();
 			view1();
 		}
 		if (pagecount == 2) {
+			fadeBoxIn();
 			view2();
 		}
 		if (pagecount == 3) {
+			fadeBoxIn();
 			view3();
 		}
 	}
@@ -248,20 +251,30 @@
 </div>
 
 <script>
+	function fadeBoxIn(){
+		document.getElementById("Rectangle_7a").setAttribute("style","fill: transparent");
+	}
+	function fadeBoxOut(){
+		document.getElementById("Rectangle_7a").setAttribute("style","fill: rgba(166,93,66,1");
+	}
+	
 	function view1(){
-		document.getElementById("DataVis-Slide-1").setAttribute("style","visibility: visible");
-		document.getElementById("DataVis-Slide-2").setAttribute("style","visibility: hidden");
-		document.getElementById("DataVis-Slide-3").setAttribute("style","visibility: hidden");
+		document.getElementById("DataVis-Slide-1").setAttribute("style","opacity: 1");
+		document.getElementById("DataVis-Slide-2").setAttribute("style","opacity: 0");
+		document.getElementById("DataVis-Slide-3").setAttribute("style","opacity: 0");
+		fadeBoxOut();
 	};
 	function view2(){
-		document.getElementById("DataVis-Slide-1").setAttribute("style","visibility: hidden");
-		document.getElementById("DataVis-Slide-2").setAttribute("style","visibility: visible");
-		document.getElementById("DataVis-Slide-3").setAttribute("style","visibility: hidden");
+		document.getElementById("DataVis-Slide-1").setAttribute("style","opacity: 0");
+		document.getElementById("DataVis-Slide-2").setAttribute("style","opacity: 1");
+		document.getElementById("DataVis-Slide-3").setAttribute("style","opacity: 0");
+		fadeBoxOut();
 	};
 	function view3(){
-		document.getElementById("DataVis-Slide-1").setAttribute("style","visibility: hidden");
-		document.getElementById("DataVis-Slide-2").setAttribute("style","visibility: hidden");
-		document.getElementById("DataVis-Slide-3").setAttribute("style","visibility: visible");
+		document.getElementById("DataVis-Slide-1").setAttribute("style","opacity: 0");
+		document.getElementById("DataVis-Slide-2").setAttribute("style","opacity: 0");
+		document.getElementById("DataVis-Slide-3").setAttribute("style","opacity: 1");
+		fadeBoxOut();
 	};
 
 	displayPage();
@@ -275,9 +288,9 @@
 	document.getElementById("Component_5__1").addEventListener("mouseleave", box);
 
 	function box(){
-		document.getElementById("Component_7__1").setAttribute("style","opacity:1; color: transparent)");
-		document.getElementById("Component_6__1").setAttribute("style","opacity:1; color: transparent)");
-		document.getElementById("Component_5__1").setAttribute("style","opacity:1; color: transparent)");
+		document.getElementById("Component_7__1").setAttribute("style","opacity:1");
+		document.getElementById("Component_6__1").setAttribute("style","opacity:1");
+		document.getElementById("Component_5__1").setAttribute("style","opacity:1");
 	}
 	function boxFill(){
 		document.getElementById("Component_7__1").setAttribute("style","opacity:.5; background-color: rgba(166,93,66,1)");
@@ -327,7 +340,8 @@
 			left: 0px;
 			top: 147px;
 			overflow: visible;
-			z-index: 30;
+			z-index: 32;
+
 		}
 		#Polygon_1 {
 			fill: rgba(166,93,66,0.4);
@@ -352,7 +366,7 @@
 			left: 936px;
 			top: 147px;
 			overflow: visible;
-			z-index: 30;
+			z-index: 32;
 		}
 		#Polygon_2 {
 			fill: rgba(166,93,66,0.4);
@@ -377,7 +391,6 @@
 			height: 268px;
 			left: 260px;
 			top: 66px;
-			fill: rgba(166,93,66,1);
 		}
 		#DataVis-Slide-1 {
 			position: absolute;
@@ -390,6 +403,10 @@
 			--web-scale-on-resize: true;
 			--web-show-navigation-controls: true;
 			--web-enable-deep-linking: true;
+			z-index: 31;
+			transition-property: opacity;
+			transition-duration: 1s;
+			transition-timing-function: linear;
 		}
 		#Ellipse_1 {
 			fill: rgba(166,93,66,1);
@@ -582,6 +599,10 @@
 			--web-scale-on-resize: true;
 			--web-show-navigation-controls: true;
 			--web-enable-deep-linking: true;
+			z-index: 31;
+			transition-property: opacity;
+			transition-duration: 1s;
+			transition-timing-function: linear;
 		}
 		#Ellipse_3 {
 			fill: rgba(166,93,66,1);
@@ -811,7 +832,10 @@
 			--web-scale-on-resize: true;
 			--web-show-navigation-controls: true;
 			--web-enable-deep-linking: true;
-			scale: 100%;
+			z-index: 31;
+			transition-property: opacity;
+			transition-duration: 1s;
+			transition-timing-function: linear;
 		}
 		#Ellipse_2 {
 			fill: rgba(166,93,66,1);
