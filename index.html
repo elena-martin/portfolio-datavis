@@ -15,7 +15,7 @@
 		pagecount += 1;
 		console.log(pagecount);
 		displayPage();
-	}
+	} 
 
 	function prevPage(){
 		if (pagecount == 1) {
@@ -26,33 +26,80 @@
 		displayPage();
 	}
 	function displayPage(){
-		if (pagecount == 1) {
-			fadeBoxIn();
-			view1();
+		switch (pagecount) {
+		case 1:
+			slide1.setAttribute("style","opacity: 1");
+			slide2.setAttribute("style","opacity: 0");
+			slide3.setAttribute("style","opacity: 0");
+			fadeBoxOut();
+			break;
+		case 2:
+			slide1.setAttribute("style","opacity: 0");
+			slide2.setAttribute("style","opacity: 1");
+			slide3.setAttribute("style","opacity: 0");
+			fadeBoxOut();
+			break;
+		case 3:
+			slide1.setAttribute("style","opacity: 0");
+			slide2.setAttribute("style","opacity: 0");
+			slide3.setAttribute("style","opacity: 1");
+			fadeBoxOut();
+			break;
+		default:
+			slide1.setAttribute("style","opacity: 1");
+			slide2.setAttribute("style","opacity: 0");
+			slide3.setAttribute("style","opacity: 0");
+			fadeBoxOut();
+			break;
 		}
-		if (pagecount == 2) {
-			fadeBoxIn();
-			view2();
-		}
-		if (pagecount == 3) {
-			fadeBoxIn();
-			view3();
+		switch (pagecount) {
+		case 1:
+			slide1.setAttribute("style","opacity: 1; pointer-events: all");
+			slide2.setAttribute("style","opacity: 0; pointer-events: none");
+			slide3.setAttribute("style","opacity: 0; pointer-events: none");
+			fadeBoxOut();
+			break;
+		case 2:
+			slide1.setAttribute("style","opacity: 0; pointer-events: none");
+			slide2.setAttribute("style","opacity: 1; pointer-events: all");
+			slide3.setAttribute("style","opacity: 0; pointer-events: none");
+			fadeBoxOut();
+			break;
+		case 3:
+			slide1.setAttribute("style","opacity: 0; pointer-events: none");
+			slide2.setAttribute("style","opacity: 0; pointer-events: none");
+			slide3.setAttribute("style","opacity: 1; pointer-events: all");
+			fadeBoxOut();
+			break;
+		default:
+			slide1.setAttribute("style","opacity: 1; pointer-events: all");
+			slide2.setAttribute("style","opacity: 0; pointer-events: none");
+			slide3.setAttribute("style","opacity: 0; pointer-events: none");
+			fadeBoxOut();
+			break;
 		}
 	}
-	
-	function openPDF1(){
-		window.open('https://69ba6b56-c9fb-4b52-88af-2f5cc8d9addd.usrfiles.com/ugd/69ba6b_56026da5acf14681ae12b5443bb166e2.pdf','_blank')
-	};
-	function openPDF2(){
-		window.open('https://69ba6b56-c9fb-4b52-88af-2f5cc8d9addd.usrfiles.com/ugd/69ba6b_4f8446dbed5049e2bc5337afce7805f4.pdf','_blank')
-	};
-	function openPDF3(){
-		window.open('https://69ba6b56-c9fb-4b52-88af-2f5cc8d9addd.usrfiles.com/ugd/69ba6b_08ae7e3e58074d4dbc7c480f830bb629.pdf','_blank')
-	};
 	
 </script>
 </head>
 <body>
+<script>
+	function openPDF1(){
+		console.log("open 1")
+		window.open('https://69ba6b56-c9fb-4b52-88af-2f5cc8d9addd.usrfiles.com/ugd/69ba6b_56026da5acf14681ae12b5443bb166e2.pdf','_blank','noreferrer')
+		displayPage();
+	};
+	function openPDF2(){
+		console.log("open 2")
+		window.open('https://69ba6b56-c9fb-4b52-88af-2f5cc8d9addd.usrfiles.com/ugd/69ba6b_4f8446dbed5049e2bc5337afce7805f4.pdf','_blank','noreferrer')
+		displayPage();
+	};
+	function openPDF3(){
+		console.log("open 3")
+		window.open('https://69ba6b56-c9fb-4b52-88af-2f5cc8d9addd.usrfiles.com/ugd/69ba6b_08ae7e3e58074d4dbc7c480f830bb629.pdf','_blank','noreferrer')
+		displayPage();
+	};
+</script>
 <div id="Nav">
 	<div id="Component_1__25" class="Component_1___25"onclick="prevPage()">
 		<svg class="Polygon_1" viewBox="0 0 107 44">
@@ -251,30 +298,15 @@
 </div>
 
 <script>
+	let slide1 = document.getElementById("DataVis-Slide-1");
+	let slide2 = document.getElementById("DataVis-Slide-2");
+	let slide3 = document.getElementById("DataVis-Slide-3");
+
 	function fadeBoxIn(){
 		document.getElementById("Rectangle_7a").setAttribute("style","fill: transparent");
 	}
 	function fadeBoxOut(){
 		document.getElementById("Rectangle_7a").setAttribute("style","fill: rgba(166,93,66,1");
-	}
-	
-	function view1(){
-		document.getElementById("DataVis-Slide-1").setAttribute("style","opacity: 1");
-		document.getElementById("DataVis-Slide-2").setAttribute("style","opacity: 0");
-		document.getElementById("DataVis-Slide-3").setAttribute("style","opacity: 0");
-		fadeBoxOut();
-	};
-	function view2(){
-		document.getElementById("DataVis-Slide-1").setAttribute("style","opacity: 0");
-		document.getElementById("DataVis-Slide-2").setAttribute("style","opacity: 1");
-		document.getElementById("DataVis-Slide-3").setAttribute("style","opacity: 0");
-		fadeBoxOut();
-	};
-	function view3(){
-		document.getElementById("DataVis-Slide-1").setAttribute("style","opacity: 0");
-		document.getElementById("DataVis-Slide-2").setAttribute("style","opacity: 0");
-		document.getElementById("DataVis-Slide-3").setAttribute("style","opacity: 1");
-		fadeBoxOut();
 	};
 
 	displayPage();
@@ -336,6 +368,7 @@
 			--web-scale-on-resize: true;
 			--web-show-navigation-controls: true;
 			--web-enable-deep-linking: true;
+
 		}
 		#Component_1__25 {
 			position: absolute;
@@ -344,7 +377,7 @@
 			left: 0px;
 			top: 147px;
 			overflow: visible;
-			z-index: 32;
+			z-index: 35;
 
 		}
 	
@@ -373,7 +406,7 @@
 			left: 936px;
 			top: 147px;
 			overflow: visible;
-			z-index: 32;
+			z-index: 35;
 		}
 		
 		.Polygon_2 {
